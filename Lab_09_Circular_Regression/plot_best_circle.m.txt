@@ -1,0 +1,36 @@
+function plot_best_circle(INPUT_matrix)
+    
+    [rows, cols] = size(INPUT_matrix);
+    ONE_matrix = ones(rows, 1);
+    
+    ONE_matrix
+    
+    A_matrix = [2.*INPUT_matrix(:,1) 2.*INPUT_matrix(:,2) ONE_matrix];
+    b_vector = [INPUT_matrix(:,1).^2 + INPUT_matrix(:,2).^2];
+    
+    x_vector = inv(A_matrix' * A_matrix) * A_matrix' * b_vector;
+    
+    c1 = x_vector(1);
+    c2 = x_vector(2);
+    c3 = x_vector(3);
+    
+    x_vector
+    c1
+    c2
+    c3
+    
+    norm = sqrt(c1^2 + c2^2 + c3);
+    
+    theta_space = linspace(0, 2*pi, 200);
+    
+    domain = norm * cos(theta_space) + c1;
+    range = norm * sin(theta_space) + c2;
+    
+    %domain
+    %range
+    
+    plot(domain, range, '-', INPUT_matrix(:,1), INPUT_matrix(:,2), '*');
+    %hold on
+    %plot();
+
+end

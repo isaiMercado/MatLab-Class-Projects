@@ -1,0 +1,27 @@
+function correlation = compute_correlation(matrix_W)
+
+    dimensionX = 1;
+    dimensionY = 2;
+    
+    rows = size(matrix_W,dimensionX);
+    cols = size(matrix_W,dimensionY) - 1;
+    
+    matrix_ONES = ones(rows, cols);
+    
+    % normalizing data because we do not want to deal with
+    % values of a million versus 0.000000001
+    matrix_X = matrix_W - (matrix_ONES * mean(matrix_W));
+    
+    % This is the algorithm to compute the correlation matrix
+    % First calculate the standard deviation
+    matrix_Y = matrix_X ./ (matrix_ONES * sqrt(diag(matrix_X' * matrix_X)).');
+    % Then compute the covariance
+    matrix_COS = matrix_Y' * matrix_Y;
+    
+    % The correlation matrix is a matrix that contains the cosine values 
+    % of the angles between the vectors
+    correlation = matrix_COS;
+
+    plot(matrix_W(:,1), matrix_W(:,2))
+
+end

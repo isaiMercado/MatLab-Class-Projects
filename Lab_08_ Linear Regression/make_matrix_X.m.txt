@@ -1,0 +1,13 @@
+function matrix_X = make_matrix_X(vector_X)
+    
+    dimensionX = 1;
+    dimensionY = 2;
+    
+    rows = size(vector_X, dimensionX);
+    cols = size(vector_X, dimensionY);
+    
+    matrix_ONES = ones(rows, cols);
+
+    matrix_X = [vector_X 1000.*matrix_ONES];
+
+end

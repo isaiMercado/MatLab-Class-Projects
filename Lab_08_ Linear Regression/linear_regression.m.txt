@@ -1,0 +1,16 @@
+function linear_regression(vector_X, vector_Y)
+% This linear regression is done by the formula 
+% |x1 1|   |m|   |y1|
+% |x2 1| * | | = |y2|
+% |x3 1|   |b|   |y3|
+% that comes from y = mx + b
+
+
+    matrix_X = make_matrix_X(vector_X);
+    vector_m_b = pinv(matrix_X) * vector_Y;
+    predicted_Y = matrix_X * vector_m_b;
+    
+    plot(vector_X, vector_Y)
+    hold on
+    plot(vector_X, predicted_Y)
+end
